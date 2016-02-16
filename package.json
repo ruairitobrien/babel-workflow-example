@@ -1,0 +1,30 @@
+{
+  "name": "babel-workflow-example",
+  "version": "1.0.0",
+  "description": "Basic example of using babel an gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruairitobrien/babel-workflow-example.git"
+  },
+  "keywords": [
+    "babe",
+    "gulp",
+    "es2015"
+  ],
+  "author": "Ruairi O'Brien",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruairitobrien/babel-workflow-example/issues"
+  },
+  "homepage": "https://github.com/ruairitobrien/babel-workflow-example#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.5.0",
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2"
+  }
+}
