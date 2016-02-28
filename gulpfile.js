@@ -2,7 +2,6 @@ var path = require('path');
 var gulp = require('gulp');
 var babelify = require('babelify')
 var browserify = require('browserify');
-var watchify = require('watchify');
 var sourcemaps = require('gulp-sourcemaps');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
@@ -22,23 +21,22 @@ var gulpOptions = {
 }
 
 /**
- * Get a bunlder that will use browserify to process modules and babel to transpile ES6 code.
- * 
+ * Get a bundler that will use browserify to process modules and babel to transpile ES6 code.
+ *
  * @param source the entry point script to be bundled
  */
 function getBuilder(source) {
-    return watchify(browserify(source, { debug: true }).transform(babelify));
+    return browserify(source, { debug: true }).transform(babelify);
 }
 
 /**
  * Pre-process and bundle up all the front end stuff
- * 
- * @param builder - the configured bunlder to use for building
+ *
+ * @param builder - the configured bundler to use for building
  * @param options - configuration options for building frontend assets
  */
 function build(builder, options) {
-    builder.bundle()
-        .on('error', function (err) { console.error(err); this.emit('end'); })
+    return builder.bundle()
         .pipe(source(options.jsMain))
         .pipe(buffer())
         .pipe(sourcemaps.init({ loadMaps: true }))
@@ -47,19 +45,19 @@ function build(builder, options) {
 }
 
 /**
- * Serve up the front end which in this case just initialises browser sync 
+ * Serve up the front end which in this case just initializes browser sync
  */
 function serve(options) {
-    browserSync.init(options);
+    return browserSync.init(options);
 }
 
 gulp.task('build', function () {
     var builder = getBuilder(path.join(gulpOptions.jsSourceDir, gulpOptions.jsMain));
-    build(builder, gulpOptions);
+    return build(builder, gulpOptions);
 });
 
 gulp.task('serve', ['build'], function () {
-    serve(gulpOptions);
+    return serve(gulpOptions);
 });
 
 gulp.task('serve-watch', ['build'], function () {
@@ -69,4 +67,3 @@ gulp.task('serve-watch', ['build'], function () {
 });
 
 gulp.task('default', ['serve-watch']);
-

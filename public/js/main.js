@@ -108,7 +108,7 @@ var nail = new _forWantOfANail.ForWantOfANail();
 
 console.log(nail.toString());
 
-if (!!document) document.getElementById('output').innerHTML = nail.toHtmlString();
+if (typeof document !== "undefined") document.getElementById('output').innerHTML = nail.toHtmlString();
 
 },{"./forWantOfANail.js":1}]},{},[2])
 
