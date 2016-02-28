@@ -1,4 +1,9 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
@@ -6,7 +11,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ForWantOfANail = function () {
+var ForWantOfANail = exports.ForWantOfANail = function () {
     function ForWantOfANail() {
         _classCallCheck(this, ForWantOfANail);
 
@@ -20,8 +25,9 @@ var ForWantOfANail = function () {
     }
 
     _createClass(ForWantOfANail, [{
-        key: 'print',
-        value: function print() {
+        key: 'toString',
+        value: function toString() {
+            var forWantOfANailString = '';
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
             var _iteratorError = undefined;
@@ -33,7 +39,7 @@ var ForWantOfANail = function () {
                     var key = _step$value[0];
                     var value = _step$value[1];
 
-                    console.log('For want of a ' + key + ' the ' + value + ' was lost,');
+                    forWantOfANailString += 'For want of a ' + key + ' the ' + value + ' was lost,\n';
                 }
             } catch (err) {
                 _didIteratorError = true;
@@ -50,12 +56,14 @@ var ForWantOfANail = function () {
                 }
             }
 
-            console.log('So a kingdom was lost—all for want of a nail.');
+            forWantOfANailString += 'So a kingdom was lost—all for want of a nail.';
+
+            return forWantOfANailString;
         }
     }, {
         key: 'toHtmlString',
         value: function toHtmlString() {
-            var theString = '';
+            var htmlString = '';
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
             var _iteratorError2 = undefined;
@@ -67,7 +75,7 @@ var ForWantOfANail = function () {
                     var key = _step2$value[0];
                     var value = _step2$value[1];
 
-                    theString += 'For want of a ' + key + ' the ' + value + ' was lost,<br>';
+                    htmlString += 'For want of a ' + key + ' the ' + value + ' was lost,<br>';
                 }
             } catch (err) {
                 _didIteratorError2 = true;
@@ -84,13 +92,25 @@ var ForWantOfANail = function () {
                 }
             }
 
-            return theString += 'So a kingdom was lost—all for want of a nail.';
+            return htmlString += 'So a kingdom was lost, all for want of a nail.';
         }
     }]);
 
     return ForWantOfANail;
 }();
 
-var nail = new ForWantOfANail();
+},{}],2:[function(require,module,exports){
+'use strict';
 
-nail.print();
+var _forWantOfANail = require('./forWantOfANail.js');
+
+var nail = new _forWantOfANail.ForWantOfANail();
+
+console.log(nail.toString());
+
+if (!!document) document.getElementById('output').innerHTML = nail.toHtmlString();
+
+},{"./forWantOfANail.js":1}]},{},[2])
+
+
+//# sourceMappingURL=main.js.map
