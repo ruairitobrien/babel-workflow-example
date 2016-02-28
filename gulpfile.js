@@ -9,7 +9,7 @@ var browserSync = require('browser-sync').create();
 
 
 /**
- * Every value specific to this particular project is contained here.
+ * Most values specific to this particular project is contained here.
  */
 var gulpOptions = {
     jsMain: 'main.js',
@@ -46,6 +46,8 @@ function build(builder, options) {
 
 /**
  * Serve up the front end which in this case just initializes browser sync
+ *
+ * @param options - configuration options for serving up web assets
  */
 function serve(options) {
     return browserSync.init(options);
